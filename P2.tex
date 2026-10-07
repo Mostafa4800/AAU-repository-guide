@@ -93,6 +93,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 \tableofcontents
 \clearpage
 
+\begin
+
 % -------------------------
 % 1. Introduction
 % -------------------------
@@ -133,7 +135,40 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 \section{Implementation}
 \label{implementation}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{images/Screenshot 2026-10-07 at 09.17.25.png}
+    \caption{Design of system architecture}
+    \cite{Whimsical}
+    \label{fig:architecture}
+\end{figure}
 
+\begin{figure}[H]
+    \centering
+    \begin{minted}[
+        breaklines,
+        style=monokai,
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+        bgcolor=mybgcolor,
+        linenos
+    ]{python}
+def build_http_json_response(status_code: int, reason: str, payload: dict) -> bytes:
+    body = json.dumps(payload).encode("utf-8")
+    headers = (
+        f"HTTP/1.1 {status_code} {reason}\r\n"
+        "Content-Type: application/json\r\n"
+        f"Content-Length: {len(body)}\r\n"
+        "Connection: close\r\n"
+        "\r\n"
+    ).encode("utf-8")
+    return headers + body
+    \end{minted}
+    \caption{build\_http\_json\_response}
+    \label{fig:build_http_json_response}
+\end{figure}
 
 \clearpage
 % ---------------------
@@ -164,6 +199,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 \section{Appendix}
 \url{https://github.com/}
 \clearpage
+\cite{Cymulate_network_attacks}
+\cite{UVA_scanning_pdf}
 % ---------------------
 % References
 % ---------------------
@@ -171,3 +208,4 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 \bibliography{references}
 
 \end{document}
+
